@@ -9,12 +9,12 @@ describe("nav bar", () => {
     render (<Nav />);
     const header = screen.getByRole('heading');
     expect(header.textContent).toMatch('Logo');
-  }) 
+  });
 
   it('three navigation divs', () => {
     render (<Nav />);
     const navigationDivs = screen.getAllByRole('navigation');
     expect(navigationDivs.length).toBe(3);
-  })
+  });
 
 }) 
