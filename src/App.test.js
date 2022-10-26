@@ -1,8 +1,15 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
+import Nav from './components/Nav';
+import Products from './components/Products';
+import Home from './components/Home'
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+describe("nav bar", () => {
+  it('nav bar matches snapshot', () => {
+    const {navBar} = render (<Nav/>)
+    expect(navBar).toMatchSnapshot()
+  }) // no clue what this does to be honest
+
+
+  it()
+}) 
