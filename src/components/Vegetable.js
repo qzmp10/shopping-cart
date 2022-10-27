@@ -3,6 +3,10 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 
 export default function Vegetable(props) {
     return (
-        <div className="vegetable"></div>
+        <div className="vegetable" data-testid='productDiv'>
+            <img className='img'/>
+            <div className ='text'>Text</div>
+            <div className='price'>Price</div>
+        </div>
     )
 }
