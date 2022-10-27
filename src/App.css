@@ -78,3 +78,107 @@
   font-style: italic;
   font-size: 1.2rem;
 }
+
+.productPageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  gap: 1rem;
+}
+
+.productPageImg {
+  background-color: blue;
+  width: 80%;
+  height: 40vh;
+  border-radius: .6rem;
+}
+
+.pageButton {
+  width: 80%;
+  padding: .5rem;
+  border: none;
+  color: white;
+  border-radius: .4rem;
+  font-weight: bold
+}
+
+.addToCart {
+  background-color: rgb(43, 248, 2);
+  font-size: 1.3rem;
+}
+
+.checkoutNow {
+  background-color: rgb(252, 13, 13);
+  font-size: 1.3rem;
+}
+
+.productDescription {
+  width: 80%;
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.productPrice {
+  font-size: 1.3rem;
+}
+
+.cartPageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.cartPageHeader {
+  font-size: 2.5rem;
+}
+
+.cartBlock {
+  border-top: solid 1px;
+  border-bottom: solid 1px;
+  width: 100%;
+  height: 20vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cartImg {
+  background-color: blue;
+  height: 80%;
+  width: 35%;
+}
+
+.cartCounter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.buyNow {
+  width: 100%;
+  padding: .5rem;
+  border: none;
+  color: white;
+  border-radius: .4rem;
+  font-weight: bold;
+  background-color: rgb(252, 13, 13);
+  font-size: 1.3rem;
+  margin-top: 5%;
+}
+
+.checkoutPageContainer {
+  margin-top: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}

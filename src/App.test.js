@@ -6,6 +6,7 @@ import Nav from './components/Nav';
 import Products from './components/Products';
 import Home from './components/Home'
 import { BrowserRouter, MemoryRouter } from 'react-router-dom';
+import ProductPage from './components/ProductPage';
 
 describe("nav bar", () => {
   it('nav bar logo renders text', () => {
@@ -32,8 +33,8 @@ describe('home container', () => {
   })
 })
 
-describe('product container', () => {
-  it('product page has header', () => {
+describe('products container', () => {
+  it('productSSSS page has header', () => {
     render(<Products />, {wrapper: BrowserRouter});
 
     const header = screen.getByRole('heading');
@@ -44,7 +45,16 @@ describe('product container', () => {
   it('product page has 4 product divs', () => {
     render(<Products />, {wrapper: BrowserRouter});
     const productDivArray = screen.getAllByTestId('productDiv');
-
     expect(productDivArray.length).toBe(4);
+  })
+})
+
+describe('product page', () => {
+  it('product page has header', () => {
+    render(<ProductPage />, {wrapper: BrowserRouter});
+    
+    const header = screen.getByRole('heading');
+
+    expect(header).not.toBe(undefined || null)
   })
 })

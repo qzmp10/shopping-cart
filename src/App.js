@@ -5,6 +5,8 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import Products from './components/Products';
 import Home from './components/Home';
 import ProductPage from './components/ProductPage';
+import CartPage from './components/CartPage';
+import FinishCheckout from './components/FinishCheckout';
 
 
 function App() {
@@ -16,6 +18,8 @@ function App() {
           <Route path='/' element={<Home />}></Route>
           <Route path='/products' element={<Products />}></Route>
           <Route path='/products/:veggie' element={<ProductPage />}></Route>
+          <Route path='/cart' element={<CartPage />}></Route>
+          <Route path='/checkout' element={<FinishCheckout />}></Route>
         </Routes>
       </div>
     </BrowserRouter>
