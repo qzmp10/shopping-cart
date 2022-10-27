@@ -71,8 +71,10 @@
 
 .text {
   font-weight: bold;
+  font-size: 1.4rem;
 }
 
 .price {
   font-style: italic;
+  font-size: 1.2rem;
 }
