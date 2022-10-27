@@ -34,7 +34,7 @@ describe('home container', () => {
 
 describe('product container', () => {
   it('product page has header', () => {
-    render(<Products />);
+    render(<Products />, {wrapper: BrowserRouter});
 
     const header = screen.getByRole('heading');
 
@@ -42,7 +42,7 @@ describe('product container', () => {
   })
 
   it('product page has 4 product divs', () => {
-    render(<Products />);
+    render(<Products />, {wrapper: BrowserRouter});
     const productDivArray = screen.getAllByTestId('productDiv');
 
     expect(productDivArray.length).toBe(4);
