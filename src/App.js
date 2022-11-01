@@ -10,15 +10,41 @@ import FinishCheckout from './components/FinishCheckout';
 
 
 function App() {
+  const [carrot, setCarrot] = useState(['Carrot', 39.99]);
+  const [potato, setPotato] = useState(['Potato', 69.99]);
+  const [tomato, setTomato] = useState(['Tomato', 2.99]);
+  const [cucumber, setCucumber] = useState(['Cucumber', 129.99]);
+  const [productPageName, setProductPageName] = useState('');
+  const [productPagePrice, setProductPagePrice] = useState('');
+
+  const getProductInfoCallback = (productName, productPrice) => {
+    console.log('yeah')
+    setProductPageName(productName);
+    setProductPagePrice(productPrice);
+  }
+
   return (
     <BrowserRouter>
       <div className="App">
         <Nav />
         <Routes>
-          <Route path='/' element={<Home />}></Route>
-          <Route path='/products' element={<Products />}>
+          <Route path='/' element={<Home />}>
           </Route>
-          <Route path='/products/:veggie' element={<ProductPage />}></Route>
+          <Route path='/products' element={<Products
+            carrot={carrot[0]}
+            potato={potato[0]}
+            tomato={tomato[0]}
+            cucumber={cucumber[0]}
+            carrotPrice={carrot[1]}
+            potatoPrice={potato[1]}
+            tomatoPrice={tomato[1]}
+            cucumberPrice={cucumber[1]}
+            callbackFn={getProductInfoCallback}
+          />}></Route>
+          <Route path='/products/:veggie' element={<ProductPage
+            productName={productPageName}
+            productPrice={productPagePrice}
+          />}></Route>
           <Route path='/cart' element={<CartPage />}></Route>
           <Route path='/checkout' element={<FinishCheckout />}></Route>
         </Routes>

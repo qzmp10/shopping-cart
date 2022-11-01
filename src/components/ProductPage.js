@@ -4,31 +4,30 @@ import { useLocation } from "react-router-dom";
 
 export default function ProductPage(props) {
 
-    const location = useLocation();
-    const productName = location.state.productName;
-    const price = location.state.price;
-
+    useEffect(() => {
+        console.log(props.productName)
+    }, [])
     return (
-        
+
         <div className='productPageContainer'>
 
-            <h1 className='productPageHeader'>{productName}</h1>
+            <h1 className='productPageHeader'>{props.productName}</h1>
             <img className='productPageImg' alt='veggie' />
 
             <div className='productDescription'>
-                {productName === 'Tomato' ? (
+                {props.productName === 'Tomato' ? (
                     <div> A nice, round and juicy Tomato </div>
-                ) 
-                : productName === 'Cucumber' ? (
-                    <div> A long, vibrant, and green Cucumber </div>
-                ) 
-                : productName === 'Potato' ? (
-                    <div> A firm, polished, and delicious Potato </div>
-                ) 
-                : (
-                    <div> A clean, shining, and delightful Carrot </div>
-                )}
-                <div className='productPrice'>${price}</div>
+                )
+                    : props.productName === 'Cucumber' ? (
+                        <div> A long, vibrant, and green Cucumber </div>
+                    )
+                        : props.productName === 'Potato' ? (
+                            <div> A firm, polished, and delicious Potato </div>
+                        )
+                            : (
+                                <div> A clean, shining, and delightful Carrot </div>
+                            )}
+                <div className='productPrice'>${props.productPrice}</div>
             </div>
             <button className='addToCart pageButton'> ADD TO CART</button>
 
