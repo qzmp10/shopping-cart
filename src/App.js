@@ -17,8 +17,10 @@ function App() {
   const [productPageName, setProductPageName] = useState('');
   const [productPagePrice, setProductPagePrice] = useState('');
 
+
   const getProductInfoCallback = (productName, productPrice) => {
-    console.log('yeah')
+    window.localStorage.setItem('productName', productName);
+    window.localStorage.setItem('productPrice', productPrice);
     setProductPageName(productName);
     setProductPagePrice(productPrice);
   }
@@ -30,6 +32,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />}>
           </Route>
+
           <Route path='/products' element={<Products
             carrot={carrot[0]}
             potato={potato[0]}
@@ -41,11 +44,15 @@ function App() {
             cucumberPrice={cucumber[1]}
             callbackFn={getProductInfoCallback}
           />}></Route>
+
           <Route path='/products/:veggie' element={<ProductPage
             productName={productPageName}
             productPrice={productPagePrice}
           />}></Route>
-          <Route path='/cart' element={<CartPage />}></Route>
+
+          <Route path='/cart' element={<CartPage
+            productName={productPageName}
+            productPrice={productPagePrice} />}></Route>
           <Route path='/checkout' element={<FinishCheckout />}></Route>
         </Routes>
       </div>
