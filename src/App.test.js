@@ -5,26 +5,28 @@ import App from './App';
 import Nav from './components/Nav';
 import Products from './components/Products';
 import Home from './components/Home'
-import { BrowserRouter, MemoryRouter } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { BrowserRouter, MemoryRouter} from 'react-router-dom';
 import ProductPage from './components/ProductPage';
+import Vegetable from './components/Vegetable';
 
 describe("nav bar", () => {
   it('nav bar logo renders text', () => {
-    render (<Nav />);
+    render(<Nav />);
     const header = screen.getByRole('heading');
     expect(header.textContent).toMatch('Logo');
   });
 
   it('three navigation divs', () => {
-    render (<Nav />);
+    render(<Nav />);
     const navigationDivs = screen.getAllByRole('navigation');
     expect(navigationDivs.length).toBe(3);
   });
-}) 
+})
 
 describe('home container', () => {
   it('home page renders', () => {
-    render(<Home />, {wrapper: BrowserRouter});
+    render(<Home />, { wrapper: BrowserRouter });
     const header = screen.getByRole('heading');
     const underHeader = screen.getByRole('second-heading');
     const shop = screen.getByRole('link');
@@ -43,18 +45,35 @@ describe('products container', () => {
   })
 
   it('product page has 4 product divs', () => {
-    render(<Products />, {wrapper: BrowserRouter});
+    render(<Products />, { wrapper: BrowserRouter });
     const productDivArray = screen.getAllByTestId('productDiv');
     expect(productDivArray.length).toBe(4);
   })
 })
 
-describe('product page', () => {
+describe('the product page', () => {
   it('product page has header', () => {
     render(<ProductPage />, {wrapper: BrowserRouter});
-    
+
     const header = screen.getByRole('heading');
 
-    expect(header).not.toBe(undefined || null)
+
+    // expect(header.textContent).not.toBe(undefined || null || '')
+    expect(header.textContent).not.toBe(3);
+  
+  })
+
+})
+
+describe('vegetable container', () => {
+  it('veggie has good name & price', () => {
+    render(<Vegetable veggie={['Donut', 420.69]} />, { wrapper: BrowserRouter });
+
+    const productName = screen.getByText('Donut');
+    const priceText = screen.getByText('$420.69')
+
+    expect(productName.textContent).toMatch('Donut');
+    expect(priceText.textContent).toMatch('$420.69')
+
   })
 })

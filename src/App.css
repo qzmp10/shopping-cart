@@ -6,6 +6,11 @@
   padding-left: 1rem;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .navigateContainer {
   display: flex;
   align-items: center;
