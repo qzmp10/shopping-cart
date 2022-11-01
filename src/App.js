@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useState, useEffect, useRef } from 'react'
 import Nav from './components/Nav';
-import { BrowserRouter, Routes, Route, Link, MemoryRouter } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Products from './components/Products';
 import Home from './components/Home';
 import ProductPage from './components/ProductPage';
@@ -17,12 +17,19 @@ function App() {
   const [productPageName, setProductPageName] = useState('');
   const [productPagePrice, setProductPagePrice] = useState('');
 
+  const cartItems = useRef(0);
+
 
   const getProductInfoCallback = (productName, productPrice) => {
     window.localStorage.setItem('productName', productName);
     window.localStorage.setItem('productPrice', productPrice);
     setProductPageName(productName);
     setProductPagePrice(productPrice);
+  }
+
+  const addItemsToCart = () => {
+    cartItems.current = cartItems.current + 1;
+    window.localStorage.setItem('cartItems', cartItems.current)
   }
 
   return (
@@ -48,11 +55,13 @@ function App() {
           <Route path='/products/:veggie' element={<ProductPage
             productName={productPageName}
             productPrice={productPagePrice}
+            addItems={addItemsToCart}
           />}></Route>
 
           <Route path='/cart' element={<CartPage
             productName={productPageName}
-            productPrice={productPagePrice} />}></Route>
+            productPrice={productPagePrice} 
+            addItems={addItemsToCart}/>}></Route>
           <Route path='/checkout' element={<FinishCheckout />}></Route>
         </Routes>
       </div>

@@ -7,8 +7,10 @@ export default function Vegetable(props) {
         props.callbackFn(props.veggie, props.veggiePrice);
     }
 
+
     return (
-        <Link to={`/products/${props.veggie.toLowerCase()}`} onClick={clicky}>
+        // the ? was to fix a typeError in jest triggered by .toLowerCase()
+        <Link to={`/products/${props.veggie?.toLowerCase()}`} onClick={clicky}> 
             <div className="vegetable" data-testid='productDiv'>
                 <img className='img' alt='veggie'/>
                 <div className='text'>{props.veggie}</div>

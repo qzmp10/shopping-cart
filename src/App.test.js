@@ -36,7 +36,7 @@ describe('home container', () => {
 })
 
 describe('products container', () => {
-  it('productSSSS page has header', () => {
+  it('(4) products page has header', () => {
     render(<Products />, {wrapper: BrowserRouter});
 
     const header = screen.getByRole('heading');
@@ -49,6 +49,7 @@ describe('products container', () => {
     const productDivArray = screen.getAllByTestId('productDiv');
     expect(productDivArray.length).toBe(4);
   })
+  
 })
 
 describe('the product page', () => {
@@ -67,13 +68,13 @@ describe('the product page', () => {
 
 describe('vegetable container', () => {
   it('veggie has good name & price', () => {
-    render(<Vegetable veggie={['Donut', 420.69]} />, { wrapper: BrowserRouter });
+    render(<Vegetable veggie={'Donut'} veggiePrice={12.99} />, { wrapper: BrowserRouter });
 
     const productName = screen.getByText('Donut');
-    const priceText = screen.getByText('$420.69')
+    const priceText = screen.getByText('$12.99')
 
     expect(productName.textContent).toMatch('Donut');
-    expect(priceText.textContent).toMatch('$420.69')
+    expect(priceText.textContent).toMatch('$12.99')
 
   })
 })

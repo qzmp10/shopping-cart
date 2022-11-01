@@ -4,7 +4,10 @@ import { useLocation } from "react-router-dom";
 
 export default function ProductPage(props) {
 
-
+    const clicky = () => {
+        props.addItems();
+    }
+    
     return (
 
         <div className='productPageContainer'>
