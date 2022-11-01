@@ -16,9 +16,11 @@ function App() {
   const [cucumber, setCucumber] = useState(['Cucumber', 129.99]);
   const [productPageName, setProductPageName] = useState('');
   const [productPagePrice, setProductPagePrice] = useState('');
-
-  const cartItems = useRef(0);
-
+  const [carrotCart, setCarrotCart] = useState(0);
+  const [potatoCart, setPotatoCart] = useState(0);
+  const [tomatoCart, setTomatoCart] = useState(0);
+  const [cucumberCart, setCucumberCart] = useState(0);
+  const [cartTotal, setCartTotal] = useState(0);
 
   const getProductInfoCallback = (productName, productPrice) => {
     window.localStorage.setItem('productName', productName);
@@ -27,15 +29,35 @@ function App() {
     setProductPagePrice(productPrice);
   }
 
-  const addItemsToCart = () => {
-    cartItems.current = cartItems.current + 1;
-    window.localStorage.setItem('cartItems', cartItems.current)
+  useEffect(() => {
+    console.log(carrotCart, potatoCart, tomatoCart, cucumberCart);
+
+    window.localStorage.setItem('cart',
+    JSON.stringify([{ count: cartTotal }, { carrotCart: carrotCart, potatoCart: potatoCart, tomatoCart: tomatoCart, cucumberCart: cucumberCart }]));
+
+  }, [cartTotal])
+
+  const addItemsToCart = (item) => {
+
+    setCartTotal(cartTotal + 1);
+    
+
+    item === 'Carrot' ? (
+      setCarrotCart(carrotCart + 1)
+    ) : item === 'Potato' ? (
+      setPotatoCart(potatoCart + 1)
+    ) : item === 'Tomato' ? (
+      setTomatoCart(tomatoCart + 1)
+    ) : (
+      setCucumberCart(cucumberCart + 1)
+    )
+    
   }
 
   return (
     <BrowserRouter>
       <div className="App">
-        <Nav />
+        <Nav cartItems={cartTotal} />
         <Routes>
           <Route path='/' element={<Home />}>
           </Route>
@@ -60,8 +82,11 @@ function App() {
 
           <Route path='/cart' element={<CartPage
             productName={productPageName}
-            productPrice={productPagePrice} 
-            addItems={addItemsToCart}/>}></Route>
+            productPrice={productPagePrice}
+            addItems={addItemsToCart}
+            itemCount={cartTotal}
+            carrotCart={carrotCart}
+          />}></Route>
           <Route path='/checkout' element={<FinishCheckout />}></Route>
         </Routes>
       </div>

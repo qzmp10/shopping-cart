@@ -5,9 +5,14 @@ import { useLocation } from "react-router-dom";
 export default function ProductPage(props) {
 
     const clicky = () => {
-        props.addItems();
+        if(props.productName === '') {
+            props.addItems(window.localStorage.productName);
+        } else {
+            props.addItems(props.productName);
+        }
+
     }
-    
+
     return (
 
         <div className='productPageContainer'>
@@ -39,7 +44,7 @@ export default function ProductPage(props) {
                     <div className='productPrice'>${window.localStorage['productPrice']}</div>
                 )}
             </div>
-            <button className='addToCart pageButton'> ADD TO CART</button>
+            <button className='addToCart pageButton' onClick={clicky}> ADD TO CART</button>
 
             <button className='checkoutNow pageButton'><Link to='/cart'>CHECKOUT NOW</Link></button>
 

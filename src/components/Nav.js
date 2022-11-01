@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export default function Nav(props) {
     return (
@@ -9,10 +9,23 @@ export default function Nav(props) {
             </Link>
 
             <div className='navigateContainer'>
+
                 <Link to='/products'>
                     <div className='navProducts' role='navigation'>Products</div>
                 </Link>
-                <div className='cart' role='navigation'>Cart</div>
+
+                <Link to='/cart'>
+                    <div className='cart' role='navigation'>
+                        <div>Cart</div>
+                        {props.cartItems !== 0 ? (
+                            <div className='cartCount'>{props.cartItems}</div>
+                        ) : (
+                            <div></div>
+                        )}
+
+                    </div>
+                </Link>
+
                 <div className='contactUs' role='navigation'>Contact Us</div>
             </div>
         </div>
