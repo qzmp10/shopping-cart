@@ -21,6 +21,7 @@ function App() {
   const [tomatoCart, setTomatoCart] = useState(0);
   const [cucumberCart, setCucumberCart] = useState(0);
   const [cartTotal, setCartTotal] = useState(0);
+  const [cartArray, setCartArray] = useState([]);
 
   const getProductInfoCallback = (productName, productPrice) => {
     window.localStorage.setItem('productName', productName);
@@ -34,6 +35,8 @@ function App() {
 
     window.localStorage.setItem('cart',
     JSON.stringify([{ count: cartTotal }, { carrotCart: carrotCart, potatoCart: potatoCart, tomatoCart: tomatoCart, cucumberCart: cucumberCart }]));
+
+    setCartArray([carrotCart, potatoCart, tomatoCart, cucumberCart]);
 
   }, [cartTotal])
 
@@ -51,7 +54,7 @@ function App() {
     ) : (
       setCucumberCart(cucumberCart + 1)
     )
-    
+
   }
 
   return (
@@ -85,7 +88,11 @@ function App() {
             productPrice={productPagePrice}
             addItems={addItemsToCart}
             itemCount={cartTotal}
-            carrotCart={carrotCart}
+            cartArray = {cartArray}
+            carrot={carrot}
+            potato={potato}
+            tomato={tomato}
+            cucumber={carrot}
           />}></Route>
           <Route path='/checkout' element={<FinishCheckout />}></Route>
         </Routes>

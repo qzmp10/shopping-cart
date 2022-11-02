@@ -9,16 +9,17 @@ import { useLocation } from 'react-router-dom';
 import { BrowserRouter, MemoryRouter} from 'react-router-dom';
 import ProductPage from './components/ProductPage';
 import Vegetable from './components/Vegetable';
+import CartPage from './components/CartPage'
 
 describe("nav bar", () => {
   it('nav bar logo renders text', () => {
-    render(<Nav />);
+    render(<Nav />, { wrapper: BrowserRouter });
     const header = screen.getByRole('heading');
-    expect(header.textContent).toMatch('Logo');
+    expect(header).not.toBe(null || undefined || '');
   });
 
   it('three navigation divs', () => {
-    render(<Nav />);
+    render(<Nav />, { wrapper: BrowserRouter });
     const navigationDivs = screen.getAllByRole('navigation');
     expect(navigationDivs.length).toBe(3);
   });
@@ -49,7 +50,6 @@ describe('products container', () => {
     const productDivArray = screen.getAllByTestId('productDiv');
     expect(productDivArray.length).toBe(4);
   })
-  
 })
 
 describe('the product page', () => {
@@ -77,4 +77,11 @@ describe('vegetable container', () => {
     expect(priceText.textContent).toMatch('$12.99')
 
   })
+})
+
+describe('cart page', () => {
+  it('cart page renders correct amount of imgs', () => {
+    render(<CartPage />,  { wrapper: BrowserRouter });
+  })
+
 })
