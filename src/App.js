@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useLayoutEffect } from 'react'
 import Nav from './components/Nav';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Products from './components/Products';
@@ -31,30 +31,33 @@ function App() {
   }
 
   useEffect(() => {
-    console.log(carrotCart, potatoCart, tomatoCart, cucumberCart);
-
-    window.localStorage.setItem('cart',
-    JSON.stringify([{ count: cartTotal }, { carrotCart: carrotCart, potatoCart: potatoCart, tomatoCart: tomatoCart, cucumberCart: cucumberCart }]));
-
+    console.log('uh')
     setCartArray([carrotCart, potatoCart, tomatoCart, cucumberCart]);
-
+    // window.localStorage.setItem('cartTotal', cartTotal);
   }, [cartTotal])
+
+  useEffect(() => {
+    console.log('nah')
+    // window.localStorage.setItem('cartArray', JSON.stringify(cartArray));
+  }, [cartArray])
 
   const addItemsToCart = (item) => {
 
     setCartTotal(cartTotal + 1);
-    
 
+    console.log(item)
     item === 'Carrot' ? (
       setCarrotCart(carrotCart + 1)
     ) : item === 'Potato' ? (
       setPotatoCart(potatoCart + 1)
     ) : item === 'Tomato' ? (
       setTomatoCart(tomatoCart + 1)
-    ) : (
+    ) : item === 'Cucumber' ? (
       setCucumberCart(cucumberCart + 1)
+    ) : (
+      console.log('error')
     )
-
+    
   }
 
   return (
@@ -88,11 +91,11 @@ function App() {
             productPrice={productPagePrice}
             addItems={addItemsToCart}
             itemCount={cartTotal}
-            cartArray = {cartArray}
+            cartArray={cartArray}
             carrot={carrot}
             potato={potato}
             tomato={tomato}
-            cucumber={carrot}
+            cucumber={cucumber}
           />}></Route>
           <Route path='/checkout' element={<FinishCheckout />}></Route>
         </Routes>
