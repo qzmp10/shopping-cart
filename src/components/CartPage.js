@@ -25,7 +25,7 @@ export default function CartPage(props) {
                 <div></div>
             )}
 
-            {cartArray[1] !== 0 ? (
+            {cartArray[1] !== 0  ? (
                 <div className='cartBlock' >
                     <img className='cartImg' alt='product' />
                     <div className='cartText'>
