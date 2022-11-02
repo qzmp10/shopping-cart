@@ -22,8 +22,8 @@ function App() {
   const [cucumberCart, setCucumberCart] = useState(0);
   const [cartTotal, setCartTotal] = useState(0);
   const [cartArray, setCartArray] = useState([0, 0, 0, 0]);
+  const [newRender, setNewRender] = useState(0)
   const firstRender = useRef(true);
-  const secondRender = useRef(false);
 
   const getProductInfoCallback = (productName, productPrice) => {
     window.localStorage.setItem('productName', productName);
@@ -33,19 +33,24 @@ function App() {
   }
 
   useEffect(() => {
-    const arrayStorage = JSON.parse(sessionStorage.getItem('cartArray'));
-    setCartArray(arrayStorage);
-    console.log(arrayStorage, cartArray)
+    console.log(sessionStorage);
+    let storageArray = JSON.parse(sessionStorage.getItem('cartArray'));
+    if(sessionStorage.length !== 0) {
+      setCarrotCart(storageArray[0]);
+      setPotatoCart(storageArray[1]);
+      setTomatoCart(storageArray[2]);
+      setCucumberCart(storageArray[3]);
+    }
   }, [])
 
 
   useEffect(() => {
-    setCartArray([carrotCart, potatoCart, tomatoCart, cucumberCart])
-  }, [carrotCart, potatoCart, tomatoCart, cucumberCart])
+    setCartArray([carrotCart, potatoCart, tomatoCart, cucumberCart]);
+    setCartTotal(carrotCart + potatoCart + tomatoCart + cucumberCart)
+  }, [carrotCart, potatoCart, tomatoCart, cucumberCart]);
   
   useEffect(() => {
-    sessionStorage.setItem('cartArray', JSON.stringify(cartArray))
-    console.log(cartArray)
+    sessionStorage.setItem('cartArray', JSON.stringify(cartArray));
     console.log(sessionStorage)
   }, [cartArray])
 
@@ -71,6 +76,7 @@ function App() {
       console.log('error')
     )
 
+  
 
   }
 

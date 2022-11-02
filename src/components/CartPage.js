@@ -13,7 +13,7 @@ export default function CartPage(props) {
                     <img className='cartImg' alt='product' />
                     <div className='cartText'>
                         <div className='productText'>{props.carrot[0]}</div>
-                        <div className='productCartPrice'>${props.carrot[1]}</div>
+                        <div className='productCartPrice'>Total ${(props.carrot[1] * cartArray[0]).toFixed(2)}</div>
                     </div>
                     <div className='cartCounter'>
                         <button className='increase'>+</button>
@@ -30,7 +30,7 @@ export default function CartPage(props) {
                     <img className='cartImg' alt='product' />
                     <div className='cartText'>
                         <div className='productText'>{props.potato[0]}</div>
-                        <div className='productCartPrice'>${props.potato[1]}</div>
+                        <div className='productCartPrice'>Total ${(props.potato[1] * cartArray[1]).toFixed(2)}</div>
                     </div>
                     <div className='cartCounter'>
                         <button className='increase'>+</button>
@@ -47,7 +47,7 @@ export default function CartPage(props) {
                     <img className='cartImg' alt='product' />
                     <div className='cartText'>
                         <div className='productText'>{props.tomato[0]}</div>
-                        <div className='productCartPrice'>${props.tomato[1]}</div>
+                        <div className='productCartPrice'>Total ${(props.tomato[1] * cartArray[2]).toFixed(2)}</div>
                     </div>
                     <div className='cartCounter'>
                         <button className='increase'>+</button>
@@ -64,7 +64,7 @@ export default function CartPage(props) {
                     <img className='cartImg' alt='product' />
                     <div className='cartText'>
                         <div className='productText'>{props.cucumber[0]}</div>
-                        <div className='productCartPrice'>${props.cucumber[1]}</div>
+                        <div className='productCartPrice'>Total ${(props.cucumber[1] * cartArray[3]).toFixed(2)}</div>
                     </div>
                     <div className='cartCounter'>
                         <button className='increase'>+</button>
