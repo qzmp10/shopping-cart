@@ -77,9 +77,9 @@ export default function CartPage(props) {
                         <div className='productCartPrice'>Total ${(props.cucumber[1] * cartArray[3]).toFixed(2)}</div>
                     </div>
                     <div className='cartCounter'>
-                        <button className='increase' data-id='Cucumber' onClick={clicky}>+</button>
-                        <div className='itemCount' > {cartArray[3]} </div>
-                        <button className='decrease' data-id='Cucumber' onClick={clicky2}>-</button>
+                        <button className='increase' data-id='Cucumber' data-testid='add' onClick={clicky}>+</button>
+                        <div className='itemCount' data-testid='output'> {cartArray[3]} </div>
+                        <button className='decrease' data-id='Cucumber'  onClick={clicky2}>-</button>
                     </div>
                 </div>
             ) : (

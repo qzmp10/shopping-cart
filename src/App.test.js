@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-
+import fireEvent from '@testing-library/user-event';
 import App from './App';
 import Nav from './components/Nav';
 import Products from './components/Products';
@@ -81,7 +81,37 @@ describe('vegetable container', () => {
 
 describe('cart page', () => {
   it('cart page renders correct amount of imgs', () => {
-    render(<CartPage />,  { wrapper: BrowserRouter });
+    render(<CartPage cartArray={[1, 0, 1, 1]}
+      carrot={['carrot', 'ccad']}
+      potato={['Carrot', '222']}
+      tomato={['Carrot', 323]}
+      cucumber={['Carrot', 2999]}/>,  { wrapper: BrowserRouter });
+
+    const images = screen.getAllByRole('img');
+
+    expect(images.length).toBe(3);
+  })
+
+  it('increment or decrement change number output', () => {
+    const addItems = jest.fn()
+
+    render(<CartPage cartArray={[1, 0, 1, 3]}
+      carrot={['carrot', 'ccad']}
+      potato={['Carrot', '222']}
+      tomato={['Carrot', 323]}
+      cucumber={['Cucumber', 2999]}
+      addItems={addItems}/>,  { wrapper: BrowserRouter });
+
+
+
+      const output = screen.getByTestId('output');
+      const increment = screen.getByTestId('add');
+      console.log('huh');
+
+      userEvent.click(increment);
+
+      expect(addItems).toHaveBeenCalled();
+      expect(output.textContent).toMatch('3');
   })
 
 })

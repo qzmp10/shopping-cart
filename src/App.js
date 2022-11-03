@@ -23,6 +23,7 @@ function App() {
   const [cartTotal, setCartTotal] = useState(0);
   const [cartArray, setCartArray] = useState([0, 0, 0, 0]);
 
+
   const getProductInfoCallback = (productName, productPrice) => {
     window.localStorage.setItem('productName', productName);
     window.localStorage.setItem('productPrice', productPrice);
@@ -33,7 +34,7 @@ function App() {
   useEffect(() => {
     console.log(sessionStorage);
     let storageArray = JSON.parse(sessionStorage.getItem('cartArray'));
-    if(sessionStorage.length !== 0) {
+    if (sessionStorage.length !== 0) {
       setCarrotCart(storageArray[0]);
       setPotatoCart(storageArray[1]);
       setTomatoCart(storageArray[2]);
@@ -46,16 +47,12 @@ function App() {
     setCartArray([carrotCart, potatoCart, tomatoCart, cucumberCart]);
     setCartTotal(carrotCart + potatoCart + tomatoCart + cucumberCart)
   }, [carrotCart, potatoCart, tomatoCart, cucumberCart]);
-  
+
   useEffect(() => {
     sessionStorage.setItem('cartArray', JSON.stringify(cartArray));
     console.log(sessionStorage)
   }, [cartArray])
 
-
-  // useEffect(() => {
-
-  // }, [cartTotal])
 
   const addItemsToCart = (item) => {
 
@@ -77,17 +74,17 @@ function App() {
 
   const removeItemsFromCart = (item) => {
 
-    if(cartTotal === 0) {
+    if (cartTotal === 0) {
       return;
     }
 
-    if(item === 'Carrot' && carrotCart !== 0) {
+    if (item === 'Carrot' && carrotCart !== 0) {
       setCarrotCart(carrotCart - 1)
-    } else if(item === 'Potato' && potatoCart !== 0) {
+    } else if (item === 'Potato' && potatoCart !== 0) {
       setPotatoCart(potatoCart - 1)
-    } else if(item === 'Tomato' && tomatoCart !== 0) {
+    } else if (item === 'Tomato' && tomatoCart !== 0) {
       setTomatoCart(tomatoCart - 1)
-    } else if(item === 'Cucumber' && cucumberCart !== 0) {
+    } else if (item === 'Cucumber' && cucumberCart !== 0) {
       setCucumberCart(cucumberCart - 1)
     } else {
       return;
