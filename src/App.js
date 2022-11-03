@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react'
 import Nav from './components/Nav';
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Products from './components/Products';
 import Home from './components/Home';
 import ProductPage from './components/ProductPage';
@@ -119,7 +119,7 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
+    <Router>
       <div className="App">
         <Nav cartItems={cartTotal} />
         <Routes>
@@ -167,7 +167,7 @@ function App() {
           <Route path='/contact' element={<ContactUs />}></Route>
         </Routes>
       </div>
-    </BrowserRouter>
+    </Router>
   );
 }
 
