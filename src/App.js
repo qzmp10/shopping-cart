@@ -22,6 +22,7 @@ function App() {
   const [cucumberCart, setCucumberCart] = useState(0);
   const [cartTotal, setCartTotal] = useState(0);
   const [cartArray, setCartArray] = useState([0, 0, 0, 0]);
+  const [currentImageUrl, setCurrentImageUrl] = useState('');
 
 
   const getProductInfoCallback = (productName, productPrice) => {
@@ -94,6 +95,10 @@ function App() {
 
   }
 
+  const getImageUrl = (url) => {
+    setCurrentImageUrl(url);
+  }
+
   return (
     <BrowserRouter>
       <div className="App">
@@ -112,12 +117,14 @@ function App() {
             tomatoPrice={tomato[1]}
             cucumberPrice={cucumber[1]}
             callbackFn={getProductInfoCallback}
+            getImage={getImageUrl}
           />}></Route>
 
           <Route path='/products/:veggie' element={<ProductPage
             productName={productPageName}
             productPrice={productPagePrice}
             addItems={addItemsToCart}
+            imageUrl={currentImageUrl}
           />}></Route>
 
           <Route path='/cart' element={<CartPage

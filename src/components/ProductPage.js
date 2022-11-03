@@ -10,7 +10,6 @@ export default function ProductPage(props) {
         } else {
             props.addItems(props.productName);
         }
-
     }
 
     return (
@@ -23,7 +22,7 @@ export default function ProductPage(props) {
                 <h1 className='productPageHeader'>{window.localStorage['productName']}</h1>
             )}
 
-            <img className='productPageImg' alt='veggie' />
+            <img className='productPageImg' alt='veggie' src={props.imageUrl}/>
 
             <div className='productDescription'>
                 {props.productName === 'Tomato' || window.localStorage['productName'] === 'Tomato' ? (

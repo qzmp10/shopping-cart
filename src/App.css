@@ -210,3 +210,7 @@ a {
   display: flex;
   flex-direction: column;
 }
+
+img {
+  box-shadow: 0 10px 15px 0px rgba(0, 0, 0, 0.459);
+}
