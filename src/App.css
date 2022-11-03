@@ -1,16 +1,28 @@
-body {
-  background-image: linear-gradient(rgba(255, 255, 255, 0.815), rgba(167, 255, 159, 0.5)), url('https://img.freepik.com/premium-vector/fruit-vegetables-background_23-2148488960.jpg');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital@1&display=swap');
+
+html {
+  /* background-image: url('https://img.freepik.com/premium-vector/fruit-vegetables-background_23-2148488960.jpg');
   background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
+  background-size: cover; */
+  background: rgb(255, 187, 0);
+
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  font-family: 'Roboto', sans-serif
 }
 
 .nav {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding-right: 1rem;
-  padding-left: 1rem;
+  justify-content: space-around;
 }
 
 a {
@@ -23,6 +35,10 @@ a {
   align-items: center;
   justify-content: space-between;
   width: 60%;
+}
+
+.logo {
+  font-family: 'Dancing Script', monospace;
 }
 
 .home {
@@ -42,6 +58,7 @@ a {
 .header {
   font-size: 2.5rem;
 }
+
 .cart {
   display: flex;
   gap: .4rem;
@@ -49,14 +66,20 @@ a {
 
 .cartCount {
   color: white;
-  background-color: red;
+  background-color: rgb(170, 0, 0);
   padding-left: .4rem;
   padding-right: .4rem;
-  border-radius: 0.8rem;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .85rem;
 }
 
 .underHeader {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  margin-top: .3rem;
+  margin-bottom: .3rem;
 }
 
 .shopNow {
@@ -64,6 +87,8 @@ a {
   font-size: 1.5rem;
   border: solid 1px black;
   padding: .5rem;
+  background-color: white;
+  border-radius: .3rem;
 }
 
 .products {
@@ -83,14 +108,14 @@ a {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: 2rem;
+  gap: 1.8rem;
 }
 
 .img {
-  background-color: blue;
   width: 85%;
   height: 12rem;
   border-radius: .6rem;
+  margin-bottom: .4rem;
 }
 
 .text {
@@ -139,14 +164,20 @@ a {
 
 .productDescription {
   width: 80%;
-  font-style: italic;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  background-color: rgba(255, 255, 255, 0.35);
+  border-radius: .2rem;
+  font-size: .95rem;
+  font-weight: bold;
+  padding-bottom: .2rem;
+  padding-top: .2rem;
 }
 
 .productPrice {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
+  font-weight: 400;
 }
 
 .cartPageContainer {
@@ -212,5 +243,158 @@ a {
 }
 
 img {
-  box-shadow: 0 10px 15px 0px rgba(0, 0, 0, 0.459);
+  box-shadow: 0 10px 15px 0px rgba(0, 0, 0, 0.658);
+  border: solid 3px black;
+}
+
+.cartImg {
+  border-radius: 0.5rem;
+}
+
+.increase,
+.decrease {
+  background-color: white;
+  color: black;
+  border: solid 1px black;
+  border-radius: .2rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.contactBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  gap: 1.2rem;
+  font-weight: bold;
+}
+
+textarea {
+  height: 10rem;
+}
+
+input {
+  color: black;
+  background-color: white;
+  border: none;
+  padding: .5rem;
+  font-weight: bold;
+  font-family: 'Roboto';
+  font-size: 1.2rem;
+  border: solid 1px;
+}
+
+@media (min-width:961px) {
+  .home {
+    margin-top: 12rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navigateContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4rem;
+    width: 60%;
+  }
+  
+  .product-container {
+    width: 70%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1.8rem;
+  }
+
+  .img {
+    width: 65%;
+  }
+
+  .productPageContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    gap: 1rem;
+  }
+
+  .productPageImg {
+    background-color: blue;
+    width: 45%;
+    height: 40vh;
+    border-radius: .6rem;
+  }
+
+  .addToCart {
+    background-color: rgb(43, 248, 2);
+    font-size: 1.3rem;
+    width: 45%;
+  }
+  
+  .checkoutNow {
+    background-color: rgb(252, 13, 13);
+    font-size: 1.3rem;
+    width: 45%;
+  }
+  
+  .productDescription {
+    width: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: rgba(255, 255, 255, 0.35);
+    border-radius: .2rem;
+    font-size: .95rem;
+    font-weight: bold;
+    padding-bottom: .2rem;
+    padding-top: .2rem;
+  }
+
+  .logo {
+    font-size: 2.5rem;
+  }
+
+  .cartBlock {
+    border-top: solid 1px;
+    width: 70%;
+    height: 20vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .cartImg {
+    background-color: blue;
+    height: 80%;
+    width: 25%;
+  }
+  
+  .cartCounter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .buyNow {
+    width: 70%;
+    padding: .5rem;
+    border: none;
+    color: white;
+    border-radius: .4rem;
+    font-weight: bold;
+    background-color: rgb(252, 13, 13);
+    font-size: 1.3rem;
+    margin-top: 2rem;
+  }
+
 }

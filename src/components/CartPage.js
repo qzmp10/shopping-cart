@@ -14,13 +14,17 @@ export default function CartPage(props) {
         props.removeItems(e.target.dataset.id);
     }
 
+    const clicky3 = () => {
+        props.removeAll();
+    }
+
     return (
         <div className='cartPageContainer'>
             <h1 className='cartPageHeader'>Your Cart</h1>
 
             {cartArray[0] !== 0 ? (
                 <div className='cartBlock' >
-                    <img className='cartImg' alt='product' />
+                    <img className='cartImg' alt='product' src={props.carrotUrl}/>
                     <div className='cartText'>
                         <div className='productText'>{props.carrot[0]}</div>
                         <div className='productCartPrice'>Total ${(props.carrot[1] * cartArray[0]).toFixed(2)}</div>
@@ -37,7 +41,7 @@ export default function CartPage(props) {
 
             {cartArray[1] !== 0 ? (
                 <div className='cartBlock' >
-                    <img className='cartImg' alt='product' />
+                    <img className='cartImg' alt='product'  src={props.potatoUrl}/>
                     <div className='cartText'>
                         <div className='productText'>{props.potato[0]}</div>
                         <div className='productCartPrice'>Total ${(props.potato[1] * cartArray[1]).toFixed(2)}</div>
@@ -54,7 +58,7 @@ export default function CartPage(props) {
 
             {cartArray[2] !== 0 ? (
                 <div className='cartBlock' >
-                    <img className='cartImg' alt='product' />
+                    <img className='cartImg' alt='product' src={props.tomatoUrl} />
                     <div className='cartText'>
                         <div className='productText'>{props.tomato[0]}</div>
                         <div className='productCartPrice'>Total ${(props.tomato[1] * cartArray[2]).toFixed(2)}</div>
@@ -71,7 +75,7 @@ export default function CartPage(props) {
 
             {cartArray[3] !== 0 ? (
                 <div className='cartBlock' >
-                    <img className='cartImg' alt='product' />
+                    <img className='cartImg' alt='product' src={props.cucumberUrl}/>
                     <div className='cartText'>
                         <div className='productText'>{props.cucumber[0]}</div>
                         <div className='productCartPrice'>Total ${(props.cucumber[1] * cartArray[3]).toFixed(2)}</div>
@@ -86,7 +90,7 @@ export default function CartPage(props) {
                 <div></div>
             )}
 
-            <button className='buyNow'> <Link to='/checkout'>CHECKOUT</Link> </button>
+            <button className='buyNow'> <Link to='/checkout' onClick={clicky3}>CHECKOUT</Link> </button>
         </div>
     )
 }

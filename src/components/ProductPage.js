@@ -12,6 +12,10 @@ export default function ProductPage(props) {
         }
     }
 
+    const checkoutClicky = () => {
+
+    }
+
     return (
 
         <div className='productPageContainer'>
@@ -26,16 +30,16 @@ export default function ProductPage(props) {
 
             <div className='productDescription'>
                 {props.productName === 'Tomato' || window.localStorage['productName'] === 'Tomato' ? (
-                    <div> A nice, round and juicy Tomato </div>
+                    <div> A round and juicy Tomato </div>
                 )
                     : props.productName === 'Cucumber' || window.localStorage['productName'] === 'Cucumber' ? (
-                        <div> A long, vibrant, and green Cucumber </div>
+                        <div> A long Cucumber </div>
                     )
                         : props.productName === 'Potato' || window.localStorage['productName'] === 'Potato' ? (
-                            <div> A firm, polished, and delicious Potato </div>
+                            <div> A delicious Potato </div>
                         )
                             : (
-                                <div> A clean, shining, and delightful Carrot </div>
+                                <div> A delightful Carrot </div>
                             )}
                 {props.productPrice !== '' ? (
                     <div className='productPrice'>${props.productPrice}</div>
@@ -45,7 +49,7 @@ export default function ProductPage(props) {
             </div>
             <button className='addToCart pageButton' onClick={clicky}> ADD TO CART</button>
 
-            <button className='checkoutNow pageButton'><Link to='/cart'>CHECKOUT NOW</Link></button>
+            <button className='checkoutNow pageButton' onClick={clicky}><Link to='/cart'>CHECKOUT NOW</Link></button>
 
 
         </div>

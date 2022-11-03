@@ -5,7 +5,7 @@ export default function Nav(props) {
     return (
         <div className='nav'>
             <Link to='/'>
-                <h1 className='logo'>Logo</h1>
+                <h1 className='logo'>Veggie's</h1>
             </Link>
 
             <div className='navigateContainer'>
@@ -26,7 +26,10 @@ export default function Nav(props) {
                     </div>
                 </Link>
 
-                <div className='contactUs' role='navigation'>Contact Us</div>
+                <Link to='/contact'>
+                    <div className='contactUs' role='navigation'>Contact Us</div>
+                </Link>
+
             </div>
         </div>
     )

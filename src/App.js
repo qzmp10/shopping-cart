@@ -7,6 +7,7 @@ import Home from './components/Home';
 import ProductPage from './components/ProductPage';
 import CartPage from './components/CartPage';
 import FinishCheckout from './components/FinishCheckout';
+import ContactUs from './components/Contact';
 
 
 function App() {
@@ -22,7 +23,12 @@ function App() {
   const [cucumberCart, setCucumberCart] = useState(0);
   const [cartTotal, setCartTotal] = useState(0);
   const [cartArray, setCartArray] = useState([0, 0, 0, 0]);
+  const [backgroundUrl, setBackgroundUrl] = ('https://img.freepik.com/premium-vector/fruit-vegetables-background_23-2148488960.jpg')
   const [currentImageUrl, setCurrentImageUrl] = useState('');
+  const [carrotUrl, setCarrotUrl] = useState('https://health.clevelandclinic.org/wp-content/uploads/sites/3/2017/07/coloredCarrots-022521-LD-770x533-1.jpg');
+  const [potatoUrl, setPotatoUrl] = useState('https://cdn.britannica.com/08/194708-050-56FF816A/potatoes.jpg');
+  const [tomatoUrl, setTomatoUrl] = useState('https://cdn.britannica.com/16/187216-050-CB57A09B/tomatoes-tomato-plant-Fruit-vegetable.jpg');
+  const [cucumberUrl, setCucumberUrl] = useState('https://post.healthline.com/wp-content/uploads/2020/09/AN88-Cucumbers-732x549-thumb-1-732x549.jpg');
 
 
   const getProductInfoCallback = (productName, productPrice) => {
@@ -41,6 +47,7 @@ function App() {
       setTomatoCart(storageArray[2]);
       setCucumberCart(storageArray[3]);
     }
+    setCurrentImageUrl(localStorage.getItem('currentImageUrl'));
   }, [])
 
 
@@ -54,6 +61,9 @@ function App() {
     console.log(sessionStorage)
   }, [cartArray])
 
+  useEffect(() => {
+    localStorage.setItem('currentImageUrl', currentImageUrl);
+  }, [currentImageUrl])
 
   const addItemsToCart = (item) => {
 
@@ -93,6 +103,15 @@ function App() {
 
     setCartTotal(cartTotal - 1);
 
+  }
+
+  const removeAll = () => {
+    let zero = 0;
+    setCarrotCart(zero);
+    setCucumberCart(zero);
+    setPotatoCart(zero);
+    setTomatoCart(zero);
+    setCartTotal(zero);
   }
 
   const getImageUrl = (url) => {
@@ -138,8 +157,14 @@ function App() {
             potato={potato}
             tomato={tomato}
             cucumber={cucumber}
+            carrotUrl={carrotUrl}
+            potatoUrl={potatoUrl}
+            tomatoUrl={tomatoUrl}
+            cucumberUrl={cucumberUrl}
+            removeAll={removeAll}
           />}></Route>
           <Route path='/checkout' element={<FinishCheckout />}></Route>
+          <Route path='/contact' element={<ContactUs />}></Route>
         </Routes>
       </div>
     </BrowserRouter>
