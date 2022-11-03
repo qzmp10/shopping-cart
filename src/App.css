@@ -1,3 +1,7 @@
+body {
+  background-color: purple;
+}
+
 .nav {
   display: flex;
   align-items: center;

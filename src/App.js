@@ -22,8 +22,6 @@ function App() {
   const [cucumberCart, setCucumberCart] = useState(0);
   const [cartTotal, setCartTotal] = useState(0);
   const [cartArray, setCartArray] = useState([0, 0, 0, 0]);
-  const [newRender, setNewRender] = useState(0)
-  const firstRender = useRef(true);
 
   const getProductInfoCallback = (productName, productPrice) => {
     window.localStorage.setItem('productName', productName);
@@ -62,8 +60,7 @@ function App() {
   const addItemsToCart = (item) => {
 
     setCartTotal(cartTotal + 1);
-
-    console.log(item)
+    
     item === 'Carrot' ? (
       setCarrotCart(carrotCart + 1)
     ) : item === 'Potato' ? (
@@ -75,8 +72,6 @@ function App() {
     ) : (
       console.log('error')
     )
-
-  
 
   }
 
