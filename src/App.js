@@ -123,7 +123,7 @@ function App() {
       <div className="App">
         <Nav cartItems={cartTotal} />
         <Routes>
-          <Route path='/shopping-cart' element={<Home />}>
+          <Route path='/shopping-cart/' element={<Home />}>
           </Route>
 
           <Route path='/products' element={<Products

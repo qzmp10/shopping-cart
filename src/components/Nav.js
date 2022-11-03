@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 export default function Nav(props) {
     return (
         <div className='nav'>
-            <Link to='/shopping-cart'>
+            <Link to='/shopping-cart/'>
                 <h1 className='logo'>Veggie's</h1>
             </Link>
 
