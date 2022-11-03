@@ -60,7 +60,7 @@ function App() {
   const addItemsToCart = (item) => {
 
     setCartTotal(cartTotal + 1);
-    
+
     item === 'Carrot' ? (
       setCarrotCart(carrotCart + 1)
     ) : item === 'Potato' ? (
@@ -72,6 +72,28 @@ function App() {
     ) : (
       console.log('error')
     )
+
+  }
+
+  const removeItemsFromCart = (item) => {
+
+    if(cartTotal === 0) {
+      return;
+    }
+
+    if(item === 'Carrot' && carrotCart !== 0) {
+      setCarrotCart(carrotCart - 1)
+    } else if(item === 'Potato' && potatoCart !== 0) {
+      setPotatoCart(potatoCart - 1)
+    } else if(item === 'Tomato' && tomatoCart !== 0) {
+      setTomatoCart(tomatoCart - 1)
+    } else if(item === 'Cucumber' && cucumberCart !== 0) {
+      setCucumberCart(cucumberCart - 1)
+    } else {
+      return;
+    }
+
+    setCartTotal(cartTotal - 1);
 
   }
 
@@ -105,6 +127,7 @@ function App() {
             productName={productPageName}
             productPrice={productPagePrice}
             addItems={addItemsToCart}
+            removeItems={removeItemsFromCart}
             itemCount={cartTotal}
             cartArray={cartArray}
             carrot={carrot}
