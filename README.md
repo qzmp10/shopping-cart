@@ -1,1 +1,3 @@
-challenges: moving state from routes
+challenges: 
+-moving state from routes
+-figuring out setting session and local storage with useEffect...
